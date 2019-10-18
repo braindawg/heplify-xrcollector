@@ -57,6 +57,8 @@ func sendHEP(conn net.Conn, outHEPCh chan []byte) {
 		if err != nil {
 			log.Println("Error on HEP write: ", err)
 			continue
+		} else if cfg.Debug {
+			log.Printf("Sent a HEP packet to %s:\n%s\n", conn.RemoteAddr(), string(packet))
 		}
 	}
 }
